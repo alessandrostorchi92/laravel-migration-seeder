@@ -28,8 +28,10 @@ return new class extends Migration
             $table->string('Codice_treno', 5);
             $table->string('Numero_carrozze',100);
 
-            // I dati di queste tabelle devono essere di default false perchè devo specificare il loro valore 
+            // Questa tabella può essere lasciata vuota 
             $table->boolean("in_orario")->nullable(true);
+
+            // I dati di questa tabella deve essere di default false perchè devo specificare il loro valore 
             $table->boolean("cancellato")->default(0);
 
             $table->timestamps();
