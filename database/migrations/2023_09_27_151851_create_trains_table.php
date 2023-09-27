@@ -32,7 +32,7 @@ return new class extends Migration
             $table->boolean("in_orario")->nullable(true);
 
             // I dati di questa tabella deve essere di default false perchè devo specificare il loro valore 
-            $table->boolean("cancellato")->default(0);
+            $table->boolean("cancellato")->default(0)->element("Indica che l'elemento non è visibile di default");
 
             $table->timestamps();
         });
