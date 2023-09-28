@@ -1,8 +1,8 @@
 <?php
 
 namespace Database\Seeders;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Train;
 
 // Per generare dati fittizzi da inserire nelle tabelle del database mediante FakerPHP dobbiamo importare: 
@@ -12,6 +12,9 @@ use Faker\Generator as Faker;
 
 class TrainsTableSeeder extends Seeder
 {
+
+    use WithoutModelEvents;
+
     /**
      * Run the database seeds.
      *
@@ -34,16 +37,16 @@ class TrainsTableSeeder extends Seeder
             $train = new Train();
 
             // Assegno i valori da attribuire a ciascuna colonna
-            $train->Company = $company[array_rand($company)];
-            $train->Stazione_di_partenza = $departure_station;
-            $train->Stazione_di_arrivo = $arrival_station;
-            $train->orario_partenza = $faker->time();
-            $train->orario_arrivo = $faker->time();
+            $train->Company = $faker->randomElement($company);
+            $train->Stazione_di_partenza = $faker->unique()->randomElement($departure_station);
+            $train->Stazione_di_arrivo = $faker->unique()->randomElement($arrival_station);
+            $train->Orario_di_partenza = $faker->time();
+            $train->Orario_di_arrivo = $faker->time();
             $train->Numero_carrozze = $faker->numberBetween(0, 100);
             $train->Codice_treno = $faker->regexify('[A-Z]{2}[0-9]{3}');
             $train->in_orario = $faker->boolean;
             $train->cancellato = $faker->boolean;
-            $train->Data_di_partenza = $date[array_rand($date)];
+            $train->Data_di_partenza = $faker->randomElement($date);
             
             //Salvo i dati nel database
             $train->save();

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date("Data_di_partenza")->after("Codice_treno");
             $table->time("Orario_di_partenza")->change();
             $table->time("Orario_di_arrivo")->change();
+            $table->Integer('Numero_carrozze')->change();
         });
     }
 
@@ -33,6 +34,7 @@ return new class extends Migration
             $table->dropColumn("Data_di_partenza")->after("Codice_treno");
             $table->string('Orario_di_partenza', 5)->change();
             $table->string('Orario_di_arrivo', 5)->change();
+            $table->string('Numero_carrozze',100)->change();
         });
     }
 };
