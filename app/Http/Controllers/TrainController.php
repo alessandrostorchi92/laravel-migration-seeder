@@ -9,9 +9,9 @@ class TrainController extends Controller {
 
     public function index() {
 
-        $trains = Train::where('Data_di_partenza', '>=', '2023-09-28')->orderBy('Data_di_partenza', 'asc')->get();
+        $trains = Train::where('Data_di_partenza', '=', '2023-09-28')->orderBy('Data_di_partenza', 'asc')->get();
 
-        dd($trains);
+        dd($trains); OK 
 
 		return view('homepage',["trains"=>$trains]);
         
