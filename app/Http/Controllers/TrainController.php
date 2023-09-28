@@ -8,7 +8,13 @@ use App\Models\Train;
 class TrainController extends Controller {
 
     public function index() {
-		return view("products.index");
+
+        $trains = Train::where('Data_di_partenza', '>=', '2023-09-28')->orderBy('Data_di_partenza', 'asc')->get();
+
+        dd($trains);
+
+		return view('homepage',["trains"=>$trains]);
+        
 	}
     
 }
